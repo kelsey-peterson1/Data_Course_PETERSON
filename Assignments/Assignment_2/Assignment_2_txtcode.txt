@@ -1,0 +1,35 @@
+##list all .csv files in directory and store in csv_files
+
+csv_files <- list.files(path = "Data", pattern = ".csv$", full.names = TRUE)
+
+# count the number of .csv files found
+length(csv_files)
+
+# read wingspan_vs_mass.csv into an object called 'df'
+
+df<- read.csv("Data/wingspan_vs_mass.csv")
+
+#view first 5 rows of the data
+
+head(df, 5)
+
+#find all files in Data that begin with lowercase 'b' 
+
+b_files <- list.files(path = "Data", pattern =  "^b", full.names = TRUE, recursive = TRUE)
+
+#Display the first line of each 'b' file using for-loop
+
+for (file in b_files) {
+  first_line_b <- readLines(file, n=1)
+  cat("File:", file, "\n")
+  cat("First line:", first_line_b, "\n\n")
+  
+}
+
+# display first lines of all .csv files using for loop
+for (file in csv_files) {
+  first_line_all <- readLines(file, n=1)
+  cat("File:", file, "\n")
+  cat("First line:", first_line_all, "\n\n")
+  
+}
